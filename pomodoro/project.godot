@@ -1,0 +1,29 @@
+config_version=5
+
+[application]
+
+config/name="Task Manager v0"
+config/description="Pomodoro and Task Manager app"
+run/main_scene="uid://byfeag75d3bod"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="uid://crs21u3os2m5f"
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+Tasks="Tasks"
+
+[gui]
+
+theme/custom_font="uid://nys7qtdh6ej5"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=true

@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://l0yptmkqj3a1"]
+
+[ext_resource type="Texture2D" uid="uid://cue5qpgac7fpu" path="res://Icons/add_remove_task_background.png" id="1_jua72"]
+[ext_resource type="Script" uid="uid://1efg2vgw1ivx" path="res://Scenes/Scripts/add_remove.gd" id="1_rxl85"]
+[ext_resource type="Texture2D" uid="uid://cfxjp4ur8m0af" path="res://Icons/add_remove_image.png" id="2_jua72"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24f0e"]
+texture = ExtResource("1_jua72")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxl85"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_24f0e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f04kw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eohc1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cw253"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3i0n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8cqe"]
+
+[node name="AddRemove" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rxl85")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_24f0e")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+
+[node name="NewTask" type="Button" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/outline_size = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rxl85")
+text = "New  Task"
+autowrap_mode = 3
+icon_alignment = 1
+
+[node name="SaveButton" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0.517647, 0.411765, 0.827451, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.517647, 0.411765, 0.827451, 1)
+theme_override_colors/font_hover_color = Color(0.517647, 0.411765, 0.827451, 1)
+theme_override_colors/font_outline_color = Color(0.517647, 0.411765, 0.827451, 1)
+theme_override_colors/font_color = Color(0.517647, 0.411765, 0.827451, 1)
+theme_override_colors/font_focus_color = Color(0.517647, 0.411765, 0.827451, 1)
+theme_override_colors/font_pressed_color = Color(0.517647, 0.411765, 0.827451, 1)
+theme_override_icons/icon = ExtResource("2_jua72")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_24f0e")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_f04kw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_eohc1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cw253")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o3i0n")
+text = "Save!"
+icon = ExtResource("2_jua72")
+icon_alignment = 1
+expand_icon = true
+
+[node name="RemoveTask" type="Button" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(65, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/outline_size = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8cqe")
+text = "Remove Task"
+autowrap_mode = 3
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/NewTask" to="." method="_on_new_task_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/RemoveTask" to="." method="_on_remove_task_pressed"]

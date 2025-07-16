@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://d246qyf7aaca2"]
+
+[ext_resource type="Texture2D" uid="uid://cqgpe63g88hbd" path="res://Icons/task_background.png" id="1_m0mqk"]
+[ext_resource type="Script" uid="uid://b3yypuuyssntj" path="res://Scenes/Scripts/task_object.gd" id="1_u5180"]
+[ext_resource type="Texture2D" uid="uid://cf0gkiidhpaj8" path="res://Icons/button_checked.png" id="2_uo4jx"]
+[ext_resource type="Texture2D" uid="uid://c7prlvkx6oboy" path="res://Icons/button_unchecked.png" id="4_m0mqk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m0mqk"]
+texture = ExtResource("1_m0mqk")
+texture_margin_left = 3.0
+texture_margin_top = 6.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uo4jx"]
+
+[node name="Task" type="Control" groups=["Tasks"]]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_u5180")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_right = 336.0
+offset_bottom = 76.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_m0mqk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CheckBox" type="CheckBox" parent="PanelContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_constants/icon_max_width = 56
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uo4jx")
+theme_override_icons/checked = ExtResource("2_uo4jx")
+theme_override_icons/unchecked = ExtResource("4_m0mqk")
+alignment = 1
+icon_alignment = 1
+
+[node name="Text" type="TextEdit" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Placeholder Text"
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+scroll_smooth = true
+scroll_fit_content_height = true

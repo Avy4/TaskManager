@@ -1,0 +1,226 @@
+[gd_scene load_steps=12 format=3 uid="uid://byfeag75d3bod"]
+
+[ext_resource type="Texture2D" uid="uid://b0ijyha8kfpii" path="res://Icons/background.png" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://bfjscb3ocylpf" path="res://Scenes/Scripts/main.gd" id="1_21xkr"]
+[ext_resource type="Texture2D" uid="uid://80ar5ha71xp1" path="res://Icons/timer_image_main.png" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://l0yptmkqj3a1" path="res://Scenes/Objects/add_remove.tscn" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://d0ismtomiy70c" path="res://Scenes/Scripts/time.gd" id="3_jjvhh"]
+[ext_resource type="Script" uid="uid://c1aj5tkgs05a6" path="res://Scenes/Scripts/quick_links_section.gd" id="6_6bp64"]
+[ext_resource type="Texture2D" uid="uid://ba1ku0a0fouef" path="res://Icons/timer_image_secondary.png" id="7_6bp64"]
+[ext_resource type="Texture2D" uid="uid://1uo4kal8f1u2" path="res://Icons/button_refresh.png" id="8_344ge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_344ge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynf5e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hptm8"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_21xkr")
+
+[node name="MainCanvas" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="MainCanvas"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_8gbba")
+
+[node name="Sections" type="Node" parent="MainCanvas"]
+
+[node name="TimerSection" type="Panel" parent="MainCanvas/Sections"]
+anchors_preset = -1
+anchor_left = 0.0025
+anchor_top = 0.0025
+anchor_right = 0.5575
+anchor_bottom = 0.5575
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="MainCanvas/Sections/TimerSection"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 54.0
+offset_top = 22.0
+offset_right = 1734.0
+offset_bottom = 1492.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_jjvhh")
+
+[node name="Start" type="Button" parent="MainCanvas/Sections/TimerSection"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -78.0
+offset_right = 134.0
+offset_bottom = -30.0
+grow_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_344ge")
+text = "Start"
+
+[node name="Reset" type="Button" parent="MainCanvas/Sections/TimerSection"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -78.0
+offset_right = -14.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ynf5e")
+text = "Reset"
+
+[node name="Time" type="Label" parent="MainCanvas/Sections/TimerSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 112.0
+offset_right = 80.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_jjvhh")
+
+[node name="PomodoroTimer" type="Timer" parent="MainCanvas/Sections/TimerSection/Time"]
+unique_name_in_owner = true
+
+[node name="WorkFor" type="Label" parent="MainCanvas/Sections/TimerSection"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = 96.0
+offset_right = 153.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Hit start to begin!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TasksSection" type="Panel" parent="MainCanvas/Sections"]
+anchors_preset = -1
+anchor_left = 0.5675
+anchor_top = 0.01
+anchor_right = 0.9975
+anchor_bottom = 0.99
+offset_left = 1.5
+offset_top = -6.0
+offset_right = -2.5
+offset_bottom = 6.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TaskScroller" type="ScrollContainer" parent="MainCanvas/Sections/TasksSection"]
+clip_contents = false
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 444.0
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="TaskHolder" type="VBoxContainer" parent="MainCanvas/Sections/TasksSection/TaskScroller"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 90
+alignment = 1
+
+[node name="AddRemove" parent="MainCanvas/Sections/TasksSection/TaskScroller/TaskHolder" node_paths=PackedStringArray("task_holder") instance=ExtResource("3_8gbba")]
+layout_mode = 2
+task_holder = NodePath("..")
+
+[node name="QuickLinksSection" type="Panel" parent="MainCanvas/Sections"]
+anchors_preset = -1
+anchor_left = 0.0025
+anchor_top = 0.5675
+anchor_right = 0.5575
+anchor_bottom = 0.9975
+script = ExtResource("6_6bp64")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="MainCanvas/Sections/QuickLinksSection"]
+timeout = 5.0
+
+[node name="StudyGraph" type="TextureRect" parent="MainCanvas/Sections/QuickLinksSection"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 438.0
+offset_bottom = 250.0
+
+[node name="CoolJit" type="TextureRect" parent="MainCanvas/Sections/QuickLinksSection"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -86.0
+offset_right = 102.0
+offset_bottom = -6.0
+grow_vertical = 0
+texture = ExtResource("7_6bp64")
+expand_mode = 2
+
+[node name="TimeAdded" type="Label" parent="MainCanvas/Sections/QuickLinksSection"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -86.0
+offset_right = 96.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Refresh" type="Button" parent="MainCanvas/Sections/QuickLinksSection"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -86.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hptm8")
+disabled = true
+text = "  "
+icon = ExtResource("8_344ge")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="MainCanvas/Sections/TimerSection/Start" to="MainCanvas/Sections/TimerSection/Time" method="_on_start_pressed"]
+[connection signal="pressed" from="MainCanvas/Sections/TimerSection/Start" to="MainCanvas/Sections/QuickLinksSection" method="_on_start_pressed"]
+[connection signal="pressed" from="MainCanvas/Sections/TimerSection/Reset" to="MainCanvas/Sections/TimerSection/Time" method="_on_reset_pressed"]
+[connection signal="timeout" from="MainCanvas/Sections/TimerSection/Time/PomodoroTimer" to="MainCanvas/Sections/TimerSection/Time" method="_on_pomodoro_timer_timeout"]
+[connection signal="timeout" from="MainCanvas/Sections/TimerSection/Time/PomodoroTimer" to="MainCanvas/Sections/QuickLinksSection" method="_on_pomodoro_timer_timeout"]
+[connection signal="request_completed" from="MainCanvas/Sections/QuickLinksSection/HTTPRequest" to="MainCanvas/Sections/QuickLinksSection" method="_on_http_request_request_completed"]
+[connection signal="pressed" from="MainCanvas/Sections/QuickLinksSection/Refresh" to="MainCanvas/Sections/QuickLinksSection" method="_on_refresh_pressed"]
