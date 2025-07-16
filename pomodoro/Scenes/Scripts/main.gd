@@ -8,8 +8,6 @@ const SAVELOAD = preload("res://Scenes/Scripts/SaveLoad.gd")
 
 # Runs on application open
 func _ready() -> void:
-	# Only refreshes the application if needed
-	OS.low_processor_usage_mode = true
 	# Creates a SAVELOAD object and calls the load function
 	var save_loader = SAVELOAD.SaveLoad.new()
 	save_loader.load_data(task_holder)
