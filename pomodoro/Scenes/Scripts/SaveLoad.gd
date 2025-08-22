@@ -1,7 +1,9 @@
 # Class that handles saving and loading of task data through the task_data.json file
 class SaveLoad:
 	# Paths to the task_data.json file and the text property of a new_task object
-	const file_path = "res://Scenes/Data/task_data.json"
+	# need to use user://task_data.json instead of res:// because the actual files in the 
+	# application aren't writable to when its running
+	const file_path = "user://task_data.json"
 	const text_path = "PanelContainer/HBoxContainer/Text"
 	
 	# new_task scene that can be instantiated

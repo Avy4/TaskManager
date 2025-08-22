@@ -14,6 +14,8 @@ config/name="Task Manager v0"
 config/description="Pomodoro and Task Manager app"
 config/version="0.0"
 run/main_scene="uid://byfeag75d3bod"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Pomodoro"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://crs21u3os2m5f"
 
