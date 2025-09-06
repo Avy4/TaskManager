@@ -22,7 +22,8 @@ class SaveLoad:
 			# Checks if the child is a task (and not the first child which is the add_remove obj)
 			if "Tasks" in child.get_groups():
 				# Appends the data to the "Task_Text" array
-				task_data["Task_Text"].append(child.get_node(text_path).text)
+				if child.get_node(text_path).text not in task_data["Task_Text"]:
+					task_data["Task_Text"].append(child.get_node(text_path).text)
 		# Converts the dict into a JSON format and stores it into the data file
 		data_file.store_line(JSON.stringify(task_data, "\t"))
 	
