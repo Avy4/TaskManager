@@ -2,6 +2,7 @@ extends Label
 
 # References to nodes
 @onready var pomodoro_timer: Timer = $PomodoroTimer
+@onready var cycles_img: TextureProgressBar = %Cycles
 @onready var work_for: Label = %WorkFor
 
 var cycles : int = 0
@@ -37,6 +38,7 @@ func _on_start_pressed() -> void:
 func _on_reset_pressed() -> void:
 	# Resets the entire pomodoro cycle
 	cycles = 0
+	cycles_img.value = 0
 	# Stops the timer
 	pomodoro_timer.stop()
 	# Turns off text updates
@@ -46,8 +48,17 @@ func _on_reset_pressed() -> void:
 # Runs on the signal recieved when the timer finishes
 func _on_pomodoro_timer_timeout() -> void:
 	# Increases cycles
-	cycles += 1
+	add_cycle()
 	# Turns off text updates
 	started = false
 	# Stops the timer
 	pomodoro_timer.stop()
+
+func add_cycle() -> void:
+	cycles += 1
+	cycles_img.value += cycles_img.step
+	if cycles_img.value > 70:
+		cycles_img.value = 0
+
+func _on_plus_pressed() -> void:
+	add_cycle()

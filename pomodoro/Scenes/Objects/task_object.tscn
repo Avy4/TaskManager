@@ -22,7 +22,7 @@ script = ExtResource("1_u5180")
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 offset_right = 336.0
-offset_bottom = 76.0
+offset_bottom = 86.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_m0mqk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
@@ -53,4 +53,4 @@ placeholder_text = "Placeholder Text"
 middle_mouse_paste_enabled = false
 wrap_mode = 1
 scroll_smooth = true
-scroll_fit_content_height = true
+scroll_fit_content_width = true
